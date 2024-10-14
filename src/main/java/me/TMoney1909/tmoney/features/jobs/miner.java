@@ -94,10 +94,7 @@ public class miner implements Listener, CommandExecutor {
 
             if (plugin.getConfig().contains("jobs.miner." + event.getBlock().getType().name().toLowerCase())) {
 
-                if (Tmoney.blockLocationStorage.containsLocation(new Location(block.getWorld(), block.getX(), block.getY(), block.getZ()))) {
-                    player.sendMessage("PLAYER PLACED");
-                } else {
-
+                if (!Tmoney.blockLocationStorage.containsLocation(new Location(block.getWorld(), block.getX(), block.getY(), block.getZ()))) {
 
                     // HERE GOES GETTING THE AMOUNT OF EXP AND MONEY
                     float moneyBase = 0;
@@ -123,13 +120,14 @@ public class miner implements Listener, CommandExecutor {
                         if (level < 100) {
                             minerexpdelta = (float) (expBase * Tmoney.getBooster() * (1 + ((level - 1) / 100.0)));
 
-                            player.sendMessage( String.valueOf(Tmoney.getBooster()));
+                            minerexpdelta = (float) Math.round(minerexpdelta * 100) /100;
                             minerexp += (minerexpdelta);
                             container.set(new NamespacedKey(Tmoney.getPlugin(), "minerexp"), PersistentDataType.FLOAT, minerexp);
                         } else {
                             minerexpdelta = 0;
                         }
                         float moneydelta = (float) (moneyBase * Tmoney.getBooster() * (1 + ((level - 1) / 100.0)));
+                        moneydelta = (float) Math.round(moneydelta*100) /100;
                         money += moneydelta;
                         container.set(new NamespacedKey(Tmoney.getPlugin(), "balance"), PersistentDataType.FLOAT, money);
 
