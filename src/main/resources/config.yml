@@ -1,0 +1,16 @@
+value:
+  cash: 10
+  exp: 12
+jobs-max-level: 100
+event-booster: 1.0
+jobs:
+  miner:
+    stone:
+      money: 1.0
+      exp: 0.5
+    deepslate:
+      money: 1.5
+      exp: 1
+    coal_ore:
+      money: 3.5
+      exp: 1.5

@@ -1,0 +1,44 @@
+name: tmoney
+version: '1.0-SNAPSHOT'
+main: me.TMoney1909.tmoney.Tmoney
+api-version: '1.21'
+description: Custom plugin!
+commands:
+  feed:
+    description: Feeds the player
+    usage: /<command>
+    aliases:
+      - hunger
+  manage:
+    description: Feeds the player
+    usage: /<command>
+    aliases:
+      - modmenu
+  bal:
+    description: Gets balance
+    usage: /<command>
+    aliases:
+      - balance
+      - money
+  addmoney:
+    description: Adds money to a user
+    usage: /<command> [Player] [Amount]
+    alias:
+      - adminpay
+  jobs:
+    description: Gets job information
+    usage: /<command>
+    alias:
+      - professions
+  setmining:
+    description: Sets level
+    usage: /<command> [Player] [Level]
+    alias:
+      - mininglevel
+  miner:
+    description: Gets miner stats
+    usage: /<command>
+    alias:
+      - jobminer
+      - mining
+
