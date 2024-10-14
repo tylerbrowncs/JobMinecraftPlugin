@@ -149,7 +149,7 @@ public class miner implements Listener, CommandExecutor {
 
 
                         if (!hasBar) {
-                            BossBar playerBossBar = Bukkit.createBossBar("Miner: Level " + levelafter, BarColor.RED, BarStyle.SOLID);
+                            BossBar playerBossBar = Bukkit.createBossBar("Miner: Level " + levelafter, BarColor.YELLOW, BarStyle.SOLID);
                             playerBossBar.addPlayer(player);
 
                             double percentage = ((0.4 * Math.sqrt(minerexp)) + 1) - Math.floor((0.4 * Math.sqrt(minerexp)) + 1);

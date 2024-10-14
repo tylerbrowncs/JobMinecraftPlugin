@@ -70,6 +70,12 @@ public class JobMenu {
         if (container.get(new NamespacedKey(Tmoney.getPlugin(), "isLumber"), PersistentDataType.BOOLEAN)) {
             // Display Level
 
+            float lumberexp = container.get(new NamespacedKey(Tmoney.getPlugin(), "lumberexp"), PersistentDataType.FLOAT);
+            int level = (int) Math.floor((0.4 * Math.sqrt(lumberexp)) + 1);
+            int nextlevelexp = (int) Math.pow((level) / 0.4, 2);
+            loresList.add("\u00a77Level: \u00a7b" + level);
+            loresList.add("\u00a77Exp: \u00a7b" + lumberexp + " / " + nextlevelexp);
+            loresList.add("\n");
             loresList.add("\u00a7a\u00a7lALREADY JOINED");
             loresList.add("\u00a7cClick to Leave");
             lumberMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, true);

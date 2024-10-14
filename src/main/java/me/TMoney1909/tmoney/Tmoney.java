@@ -6,6 +6,7 @@ import me.TMoney1909.tmoney.features.BlockLocationStorage;
 import me.TMoney1909.tmoney.features.economy;
 import me.TMoney1909.tmoney.features.jobs.JobMenuEvents;
 import me.TMoney1909.tmoney.features.jobs.JobsCommand;
+import me.TMoney1909.tmoney.features.jobs.lumberjack;
 import me.TMoney1909.tmoney.features.jobs.miner;
 import me.TMoney1909.tmoney.menus.ManageMenuEvents;
 import me.TMoney1909.tmoney.menus.ReasonMenuEvent;
@@ -40,6 +41,7 @@ public final class Tmoney extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new miner(), this);
         Bukkit.getPluginManager().registerEvents(new JobsCommand(), this);
         Bukkit.getPluginManager().registerEvents(new JobMenuEvents(), this);
+        Bukkit.getPluginManager().registerEvents(new lumberjack(), this);
 
         getCommand("jobs").setExecutor(new JobsCommand());
         getCommand("feed").setExecutor(new feed());
@@ -48,6 +50,7 @@ public final class Tmoney extends JavaPlugin {
         getCommand("manage").setExecutor(new ManageCommand());
         getCommand("miner").setExecutor(new miner());
         getCommand("setmining").setExecutor(new miner());
+        getCommand("lumberjack").setExecutor(new lumberjack());
 
     }
 

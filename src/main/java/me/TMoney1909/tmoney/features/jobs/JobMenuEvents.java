@@ -37,6 +37,20 @@ public class JobMenuEvents implements Listener {
 
 
 
+            } else  if (event.getCurrentItem().getType().equals(Material.DIAMOND_AXE)) {
+                PersistentDataContainer container = player.getPersistentDataContainer();
+
+
+
+
+                boolean isLumber = container.get(new NamespacedKey(Tmoney.getPlugin(), "isLumber"), PersistentDataType.BOOLEAN);
+                container.set(new NamespacedKey(Tmoney.getPlugin(), "isLumber"), PersistentDataType.BOOLEAN, !(isLumber));
+
+
+                container.set(new NamespacedKey(Tmoney.getPlugin(), "Lumberexp"), PersistentDataType.FLOAT, resetValue);
+
+
+
             }
             event.setCancelled(true);
             new JobMenu(player);

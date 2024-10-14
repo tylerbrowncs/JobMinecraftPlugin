@@ -14,3 +14,10 @@ jobs:
     coal_ore:
       money: 3.5
       exp: 1.5
+  lumberjack:
+    oak_log:
+      money: 5.0
+      exp: 3.0
+    oak_leaves:
+      money: 0.3
+      exp: 1.0

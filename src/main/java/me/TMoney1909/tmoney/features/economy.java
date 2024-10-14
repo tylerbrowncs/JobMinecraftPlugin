@@ -30,7 +30,7 @@ public class economy implements CommandExecutor, Listener {
                 PersistentDataContainer data = p.getPersistentDataContainer();
 
                 data.get(new NamespacedKey(Tmoney.getPlugin(), "balance"), PersistentDataType.FLOAT);
-                commandSender.sendMessage( "\u00a77Balance: \u00a7c₹" + data.get(new NamespacedKey(Tmoney.getPlugin(), "balance"), PersistentDataType.FLOAT));
+                commandSender.sendMessage( "\u00a77Balance: \u00a7c₹" + Math.floor(data.get(new NamespacedKey(Tmoney.getPlugin(), "balance"), PersistentDataType.FLOAT)*100)/100);
                 return true;
             }
             return false;

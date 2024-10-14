@@ -41,4 +41,9 @@ commands:
     alias:
       - jobminer
       - mining
+  lumberjack:
+    descript: Get lumberjack stats
+    usage: /<command>
+    alias:
+      lumber
 
