@@ -42,8 +42,12 @@ commands:
       - jobminer
       - mining
   lumberjack:
-    descript: Get lumberjack stats
+    description: Get lumberjack stats
     usage: /<command>
     alias:
       lumber
+  setlumberjack:
+    description: Set Lumberjack level
+    alias:
+      - lumberjacklevel
 

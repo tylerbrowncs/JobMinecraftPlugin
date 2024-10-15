@@ -51,6 +51,7 @@ public final class Tmoney extends JavaPlugin {
         getCommand("miner").setExecutor(new miner());
         getCommand("setmining").setExecutor(new miner());
         getCommand("lumberjack").setExecutor(new lumberjack());
+        getCommand("setlumberjack").setExecutor(new lumberjack());
 
     }
 

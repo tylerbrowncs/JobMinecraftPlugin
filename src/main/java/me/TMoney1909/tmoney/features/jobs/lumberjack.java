@@ -25,6 +25,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.codehaus.plexus.util.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
+import static me.TMoney1909.tmoney.Tmoney.getPlugin;
 import static me.TMoney1909.tmoney.Tmoney.plugin;
 
 public class lumberjack implements Listener, CommandExecutor {
@@ -48,6 +49,23 @@ public class lumberjack implements Listener, CommandExecutor {
                     player.sendMessage("\u00a7bLumberjack Statistics!\n\u00a77Level:  \u00a7b" + level + " (Max)");
                 }
 
+                return true;
+
+            }
+        } else if (command.getName().equalsIgnoreCase("setlumberjack")) {
+            if (commandSender instanceof Player) {
+                if (strings.length == 2) {
+                    Player target = Bukkit.getPlayer(strings[0]);
+                    PersistentDataContainer container = target.getPersistentDataContainer();
+                    int levelwant = Integer.parseInt(strings[1]);
+
+                    float expwant = (float) Math.pow((levelwant - 1) / 0.4, 2) + 1;
+
+                    container.set(new NamespacedKey(getPlugin(), "lumberexp"), PersistentDataType.FLOAT, expwant);
+                    commandSender.sendMessage("Successfully adjusted players level.");
+                    return true;
+
+                }
             }
         }
         return false;
