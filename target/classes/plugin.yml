@@ -50,4 +50,10 @@ commands:
     description: Set Lumberjack level
     alias:
       - lumberjacklevel
+  booster:
+    usage: /<command>
+    description: gets booster
+  setbooster:
+    usage: /<command> (amount) (time in seconds)
+    description: Sets booster
 

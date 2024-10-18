@@ -117,7 +117,7 @@ public class miner implements Listener, CommandExecutor {
                         float minerexpdelta;
 
 
-                        if (level < 100) {
+                        if (level < Integer.parseInt(plugin.getConfig().getString("jobs-max-level"))) {
                             minerexpdelta = (float) (expBase * Tmoney.getBooster() * (1 + ((level - 1) / 100.0)));
 
                             minerexpdelta = (float) Math.round(minerexpdelta * 100) /100;

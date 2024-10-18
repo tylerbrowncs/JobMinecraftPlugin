@@ -25,8 +25,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.codehaus.plexus.util.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
-import static me.TMoney1909.tmoney.Tmoney.getPlugin;
-import static me.TMoney1909.tmoney.Tmoney.plugin;
+import static me.TMoney1909.tmoney.Tmoney.*;
 
 public class lumberjack implements Listener, CommandExecutor {
     @Override
@@ -39,15 +38,18 @@ public class lumberjack implements Listener, CommandExecutor {
 
                 float lumberexp = container.get(new NamespacedKey(Tmoney.getPlugin(), "lumberexp"), PersistentDataType.FLOAT);
 
-                int level = (int) Math.floor((0.4 * Math.sqrt(lumberexp)) + 1);
+                int level = expMoneyCalcs.expToLevel(lumberexp);
 
-                int nextlevelexp = (int) Math.pow((level) / 4, 2);
+                float currentlevelexp = (float) Math.round((lumberexp - expMoneyCalcs.levelToTotalExp(level)) * 100) /100;
+                float nextlevelexp = (float) Math.round(expMoneyCalcs.levelToNextLevelExp(level + 1) * 100) /100;
 
                 if (level < 100) {
-                    player.sendMessage("\u00a7bLumberjack Statistics!\n\u00a77Level:  \u00a7b" + level + "\n\u00a77Progress: \u00a7b" + lumberexp + " / " + nextlevelexp);
+                    player.sendMessage("\u00a7bLumberjack Statistics!\n\u00a77Level:  \u00a7b" + level + "\n\u00a77Progress: \u00a7b" + currentlevelexp + " / " + nextlevelexp);
                 } else {
                     player.sendMessage("\u00a7bLumberjack Statistics!\n\u00a77Level:  \u00a7b" + level + " (Max)");
                 }
+
+                setBooster(2, 10);
 
                 return true;
 
@@ -100,14 +102,14 @@ public class lumberjack implements Listener, CommandExecutor {
 
                     float lumberexp = container.get(new NamespacedKey(Tmoney.getPlugin(), "lumberexp"), PersistentDataType.FLOAT);
                     float money = container.get(new NamespacedKey(Tmoney.getPlugin(), "balance"), PersistentDataType.FLOAT);
-                    int level = (int) Math.floor((0.4 * Math.sqrt(lumberexp)) + 1);
+                    int level = expMoneyCalcs.expToLevel(lumberexp);
 
                     if (!((moneyBase == 0) && (expBase == 0))) {
                         float baseValue = 1;
                         float lumberexpdelta;
 
 
-                        if (level < 100) {
+                        if (level < Integer.parseInt(plugin.getConfig().getString("jobs-max-level"))) {
                             lumberexpdelta = (float) (expBase * Tmoney.getBooster() * (1 + ((level - 1) / 100.0)));
 
                             lumberexpdelta = (float) Math.round(lumberexpdelta * 100) /100;
